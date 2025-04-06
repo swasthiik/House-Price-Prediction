@@ -1,0 +1,5 @@
+
+2. **Train the model**:
+
+Run `house_price_prediction.py` to train the model and save it as 'model.pkl'.
+
