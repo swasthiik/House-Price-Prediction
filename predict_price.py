@@ -2,8 +2,8 @@ import pickle
 import numpy as np
 
 # Loading the trained model from 'model.pkl'
-with open('model.pkl', 'rb') as file:
-    model = pickle.load(file)
+with open('model.pkl', 'rb') as f:
+    model = pickle.load(f)
 
 # Function to predict house price
 def predict_price(area, bedrooms, age):

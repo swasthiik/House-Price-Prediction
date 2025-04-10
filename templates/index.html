@@ -7,11 +7,17 @@
     <h1>House Price Prediction</h1>
 
     <form action="/predict" method="post">
-        <label>Enter Area (sq.ft):</label>
+        <label>Area (sq.ft):</label>
         <input type="text" name="area" required><br><br>
 
-        <label>Enter Bedrooms:</label>
+        <label>Bedrooms:</label>
         <input type="text" name="bedrooms" required><br><br>
+
+        <label>Bathrooms:</label>
+        <input type="text" name="bathrooms" required><br><br>
+
+        <label>Location:</label>
+        <input type="text" name="location" required><br><br>
 
         <input type="submit" value="Predict">
     </form>
@@ -19,5 +25,3 @@
     <h2>{{ prediction_text }}</h2>
 </body>
 </html>
-
-
