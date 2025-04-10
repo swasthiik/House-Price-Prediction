@@ -2,8 +2,9 @@ import streamlit as st
 import pickle
 import numpy as np
 
-model = pickle.load(open('output/model.pkl', 'rb'))
-label_encoder = pickle.load(open('output/label_encoder.pkl', 'rb'))
+model = pickle.load(open('model/model.pkl', 'rb'))
+label_encoder = pickle.load(open('model/label_encoder.pkl', 'rb'))
+
 
 st.title("House Price Prediction")
 st.markdown("Enter the details below to predict the house price.")
