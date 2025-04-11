@@ -1,23 +1,25 @@
 import streamlit as st
+import pickle
+import numpy as np
 
-st.title("House Price Prediction")
+model = pickle.load(open('model.pkl', 'rb'))
+
+st.title("House Price Prediction (ML Model)")
 
 area = st.number_input("Area (sqft):", min_value=1)
 bedrooms = st.number_input("Bedrooms:", min_value=1)
 bathrooms = st.number_input("Bathrooms:", min_value=1)
 location = st.selectbox("Location:", ['Delhi', 'Mumbai', 'Chennai', 'Kolkata', 'Bangalore'])
 
+location_dict = {
+    'Delhi': 0,
+    'Mumbai': 2,
+    'Chennai': 1,
+    'Kolkata': 3,
+    'Bangalore': 4
+}
+
 if st.button("Predict"):
-    price = 0
-
-    # Fixed Dataset Based Logic
-    if area == 1500 and bedrooms == 3 and bathrooms == 2 and location == 'Mumbai':
-        price = 250000
-    elif area == 2000 and bedrooms == 3 and bathrooms == 2 and location == 'Delhi':
-        price = 270000
-    elif area == 2500 and bedrooms == 4 and bathrooms == 3 and location == 'Bangalore':
-        price = 350000
-    else:
-        price = 200000  # default price for other inputs
-
+    input_data = np.array([[area, bedrooms, bathrooms, location_dict[location]]])
+    price = model.predict(input_data)[0]
     st.success(f"Predicted House Price: ₹ {price:,.2f}")
